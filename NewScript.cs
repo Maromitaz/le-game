@@ -12,7 +12,7 @@ public partial class NewScript : Sprite2D
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-    float speed = 50.0f;
+    float speed = 100.0f;
     public override void _Process(double delta)
     {
         if (Input.IsActionPressed(action: "ui_right"))
