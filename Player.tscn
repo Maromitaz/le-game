@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dcb2re2w3c3w5"]
+
+[ext_resource type="Script" uid="uid://chvn6fomku6nc" path="res://NewScript.cs" id="1_kpjcp"]
+[ext_resource type="Texture2D" uid="uid://b1jejcfxxwjvp" path="res://icon.svg" id="2_kne1u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vtoc"]
+size = Vector2(128, 128)
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=433814693]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_kpjcp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=399094598]
+texture = ExtResource("2_kne1u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=923942197]
+shape = SubResource("RectangleShape2D_8vtoc")
