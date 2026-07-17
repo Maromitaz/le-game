@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://nww00bxj8ogg"]
 
-[ext_resource type="Texture2D" uid="uid://dibkdu4t4c6bd" path="res://assets/Sprite-0003.png" id="1_thia8"]
+[ext_resource type="Texture2D" uid="uid://dibkdu4t4c6bd" path="res://assets/Images/Atlases/Sprite-0003.png" id="1_dcmhf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lolil"]
-texture = ExtResource("1_thia8")
+texture = ExtResource("1_dcmhf")
 0:0/0 = 0
 1:0/0 = 0
 1:1/0 = 0
@@ -23,13 +23,12 @@ tile_set = SubResource("TileSet_8vtoc")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=2020487201]
 position = Vector2(576.00006, 17)
-rotation = -5.173683e-05
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_1q0j8")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=1184847631]
 position = Vector2(15, 462)
-rotation = -1.5718268
+rotation = 1.5707964
 shape = SubResource("RectangleShape2D_1q0j8")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1272580827]

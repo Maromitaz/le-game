@@ -13,7 +13,7 @@ config_version=5
 config/name="Le game"
 run/main_scene="uid://dhqnfl20myluj"
 config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://assets/Images/icon.svg"
 
 [display]
 

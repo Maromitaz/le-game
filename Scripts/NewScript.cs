@@ -19,6 +19,5 @@ public partial class NewScript : CharacterBody2D
         {
             Velocity = Velocity.Slide(collision.GetNormal());
         }
-        //MoveAndSlide();
     }
 }
