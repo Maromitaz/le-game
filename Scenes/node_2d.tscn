@@ -8,5 +8,5 @@
 [node name="Map1" parent="." unique_id=1650113571 instance=ExtResource("1_0e48y")]
 
 [node name="Player" parent="." unique_id=167226555 instance=ExtResource("2_0e48y")]
-position = Vector2(591, 293)
+position = Vector2(594, 380)
 speed = 500.0
