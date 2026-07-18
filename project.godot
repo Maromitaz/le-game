@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Le game"
-run/main_scene="uid://dhqnfl20myluj"
+run/main_scene="uid://c0phnsqq2koo4"
 config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
 config/icon="res://assets/Images/icon.svg"
 
