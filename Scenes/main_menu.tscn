@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://darbd0qi5sou4"]
 
-[sub_resource type="Theme" id="Theme_8vtoc"]
+[ext_resource type="Script" uid="uid://3wuuvqwaxo6y" path="res://Scenes/StartGame.cs" id="1_28flt"]
+[ext_resource type="Script" uid="uid://q1glq4drgs0h" path="res://Scenes/Quit.cs" id="2_48xlc"]
 
 [node name="Main Menu" type="Control" unique_id=363339450]
 layout_mode = 3
@@ -10,8 +11,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MenuBar" type="MenuBar" parent="." unique_id=888232990]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme = SubResource("Theme_8vtoc")
+[node name="Control" type="Control" parent="." unique_id=257437616]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start Game" type="Button" parent="Control" unique_id=1756750449]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42
+anchor_top = 0.25
+anchor_right = 0.57
+anchor_bottom = 0.35
+grow_horizontal = 2
+text = "Start Game"
+script = ExtResource("1_28flt")
+
+[node name="Quit" type="Button" parent="Control" unique_id=195464490]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42
+anchor_top = 0.5
+anchor_right = 0.57
+anchor_bottom = 0.6
+text = "Quit"
+script = ExtResource("2_48xlc")

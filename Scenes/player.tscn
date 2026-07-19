@@ -14,3 +14,5 @@ texture = ExtResource("2_cvnsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1768192260]
 shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=30516844]
