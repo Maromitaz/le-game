@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://darbd0qi5sou4"]
 
-[ext_resource type="Script" uid="uid://3wuuvqwaxo6y" path="res://Scripts/StartGame.cs" id="1_28flt"]
-[ext_resource type="Script" uid="uid://q1glq4drgs0h" path="res://Scripts/Quit.cs" id="2_48xlc"]
+[ext_resource type="Script" uid="uid://cldpsyv3e6pm4" path="res://Scenes/MainMenu.cs" id="1_28flt"]
 
 [node name="Main Menu" type="Control" unique_id=363339450]
 layout_mode = 3
@@ -10,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_28flt")
 
 [node name="Control" type="Control" parent="." unique_id=257437616]
 layout_mode = 1
@@ -28,7 +28,6 @@ anchor_right = 0.57
 anchor_bottom = 0.35
 grow_horizontal = 2
 text = "Start Game"
-script = ExtResource("1_28flt")
 
 [node name="Quit" type="Button" parent="Control" unique_id=195464490]
 layout_mode = 1
@@ -38,4 +37,6 @@ anchor_top = 0.5
 anchor_right = 0.57
 anchor_bottom = 0.6
 text = "Quit"
-script = ExtResource("2_48xlc")
+
+[connection signal="pressed" from="Control/Start Game" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]

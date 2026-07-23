@@ -8,6 +8,7 @@
 size = Vector2(128, 128)
 
 [node name="Player" type="CharacterBody2D" unique_id=167226555]
+z_index = 10
 script = ExtResource("1_cvnsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=449538394]
