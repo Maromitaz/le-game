@@ -11,14 +11,23 @@ config_version=5
 [application]
 
 config/name="Le game"
-run/main_scene="uid://c0phnsqq2koo4"
+run/main_scene="uid://darbd0qi5sou4"
 config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
 config/icon="res://assets/Images/icon.svg"
 
+[autoload]
+
+Globals="*uid://celjqqdva1mim"
+
 [display]
 
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+display_server/driver.windows="windows"
+display_server/driver.android="android"
+display_server/driver.ios="iOS"
+display_server/driver.visionos="visionOS"
+display_server/driver.macos="macos"
 
 [dotnet]
 
@@ -75,6 +84,7 @@ ui_down={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

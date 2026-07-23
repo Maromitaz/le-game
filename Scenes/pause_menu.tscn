@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://dcq0knf0r1oei"]
+
+[ext_resource type="Script" uid="uid://dy1yuqgdwc1uw" path="res://Scripts/PauseMenu.cs" id="1_hdmo1"]
+
+[sub_resource type="Animation" id="Animation_wyi4u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pause Container:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hdmo1"]
+resource_name = "pause"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pause Container:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nwcfo"]
+_data = {
+&"RESET": SubResource("Animation_wyi4u"),
+&"pause": SubResource("Animation_hdmo1")
+}
+
+[node name="Pause Menu" type="Control" unique_id=496217768]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hdmo1")
+
+[node name="Pause Container" type="Control" parent="." unique_id=1903078279]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume Game" type="Button" parent="Pause Container" unique_id=1937356003]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.25
+anchor_right = 0.55
+anchor_bottom = 0.3
+offset_left = -61.0
+offset_right = 60.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Resume Game"
+
+[node name="Options" type="Button" parent="Pause Container" unique_id=1619887021]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.35
+anchor_right = 0.55
+anchor_bottom = 0.4
+offset_left = -61.0
+offset_right = 60.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+
+[node name="Main Menu" type="Button" parent="Pause Container" unique_id=312455554]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.45
+anchor_right = 0.55
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_right = 60.0
+offset_bottom = 16.0
+text = "Main Menu"
+
+[node name="Quit Game" type="Button" parent="Pause Container" unique_id=1954648240]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.55
+anchor_right = 0.55
+anchor_bottom = 0.6
+offset_left = -61.0
+offset_right = 60.0
+offset_bottom = 16.0
+text = "Quit Game"
+
+[node name="Options Container" type="Control" parent="." unique_id=1843003916]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="Button" parent="Options Container" unique_id=196972998]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.48
+anchor_right = 0.55
+anchor_bottom = 0.5
+offset_left = -22.5
+offset_top = -15.5
+offset_right = 22.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+
+[node name="Full Screen" type="Button" parent="Options Container" unique_id=1538276479]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.38
+anchor_right = 0.55
+anchor_bottom = 0.4
+offset_left = -22.0
+offset_top = -15.0
+offset_right = 23.0
+offset_bottom = 16.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=213345196]
+libraries/ = SubResource("AnimationLibrary_nwcfo")
+
+[connection signal="pressed" from="Pause Container/Resume Game" to="." method="_on_resume_game_pressed"]
+[connection signal="pressed" from="Pause Container/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Pause Container/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Pause Container/Quit Game" to="." method="_on_quit_game_pressed"]
+[connection signal="pressed" from="Options Container/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Options Container/Full Screen" to="." method="_on_full_screen_pressed"]

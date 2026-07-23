@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://chvn6fomku6nc" path="res://Scripts/NewScript.cs" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://b1jejcfxxwjvp" path="res://assets/Images/icon.svg" id="2_cvnsp"]
+[ext_resource type="PackedScene" uid="uid://dcq0knf0r1oei" path="res://Scenes/pause_menu.tscn" id="3_6t5aa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(128, 128)
 
 [node name="Player" type="CharacterBody2D" unique_id=167226555]
+z_index = 10
 script = ExtResource("1_cvnsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=449538394]
@@ -14,3 +16,9 @@ texture = ExtResource("2_cvnsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1768192260]
 shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=30516844]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=659464750]
+
+[node name="Pause Menu" parent="CanvasLayer" unique_id=496217768 instance=ExtResource("3_6t5aa")]
