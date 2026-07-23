@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dcq0knf0r1oei"]
 
-[ext_resource type="Script" uid="uid://dy1yuqgdwc1uw" path="res://PauseMenu.cs" id="1_hdmo1"]
+[ext_resource type="Script" uid="uid://dy1yuqgdwc1uw" path="res://Scripts/PauseMenu.cs" id="1_hdmo1"]
 
 [sub_resource type="Animation" id="Animation_wyi4u"]
 length = 0.001

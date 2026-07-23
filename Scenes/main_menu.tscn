@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://darbd0qi5sou4"]
 
-[ext_resource type="Script" uid="uid://3wuuvqwaxo6y" path="res://Scenes/StartGame.cs" id="1_28flt"]
-[ext_resource type="Script" uid="uid://q1glq4drgs0h" path="res://Scenes/Quit.cs" id="2_48xlc"]
+[ext_resource type="Script" uid="uid://3wuuvqwaxo6y" path="res://Scripts/StartGame.cs" id="1_28flt"]
+[ext_resource type="Script" uid="uid://q1glq4drgs0h" path="res://Scripts/Quit.cs" id="2_48xlc"]
 
 [node name="Main Menu" type="Control" unique_id=363339450]
 layout_mode = 3

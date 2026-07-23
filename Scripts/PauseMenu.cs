@@ -34,8 +34,11 @@ public partial class PauseMenu : Control
 
     public void _on_main_menu_pressed()
     {
-        SceneManager sceneManager = (SceneManager)this.FindParent("SceneManager");
-		sceneManager.EmitSignal("ChangeScene", "MainMenu");
+        Globals Globals = GetNode<Globals>("/root/Globals");
+        Globals.GoToScene(Globals.Scenes.MainMenu);
+        GetTree().Paused = false;
+        //SceneManager sceneManager = (SceneManager)this.FindParent("SceneManager");
+        //sceneManager.EmitSignal("ChangeScene", "MainMenu");
     }
 
     public void _on_quit_game_pressed()
