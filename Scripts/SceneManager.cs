@@ -18,7 +18,7 @@ public partial class SceneManager : Node
     {
         foreach (var scene in this.GetChildren())
         {
-            this.RemoveChild(scene);
+            scene.QueueFree();
         }
     }
 
@@ -29,56 +29,71 @@ public partial class SceneManager : Node
 
     Dictionary Scenes = new Dictionary
     {
-        { "MainMenu", SceneLoader("res://Scenes/main_menu.tscn") },
-        { "map_1", SceneLoader("res://Scenes/map_1.tscn") },
+        { "MainMenu", "res://Scenes/main_menu.tscn" },
+        { "map_1", "res://Scenes/map_1.tscn" },
     };
 
     public PackedScene GetScene(String name)
     {
-        return Scenes[name].As<PackedScene>();
+        return SceneLoader(Scenes[name].As<String>());
     }
 
-    //[Signal]
-    public void LoadFirstScene()
+    //public void LoadFirstScene()
+    //{
+    //    this.killAllChildren();
+
+    //    CharacterBody2D PlayerInstance = (CharacterBody2D)(Player.Instantiate());
+    //    this.CurrentScene = "map_1";
+    //    PackedScene currentInstance = GetScene(this.CurrentScene);
+    //    Node instance = currentInstance.Instantiate();
+
+    //    PlayerInstance.Position = new Vector2(400, 300);
+
+    //    AddChild(instance);
+    //    AddChild(PlayerInstance);
+    //}
+
+    //private void LoadMainMenu()
+    //{
+    //    this.killAllChildren();
+    //    this.CurrentScene = "MainMenu";
+    //    PackedScene MainMenu = GetScene(this.CurrentScene);
+    //    Node MenuInstance = MainMenu.Instantiate();
+
+    //    AddChild(MenuInstance);
+    //}
+
+    private bool IsScenePlayable(String name)
     {
-        this.killAllChildren();
+        try
+        {
+            return Playable[name].As<bool>();
+        }
+        catch
+        { 
+            return false; 
+        }
 
-        CharacterBody2D PlayerInstance = (CharacterBody2D)(Player.Instantiate());
-        this.CurrentScene = "map_1";
-        PackedScene currentInstance = GetScene(this.CurrentScene);
-        Node instance = currentInstance.Instantiate();
-
-        PlayerInstance.Position = new Vector2(400, 300);
-
-        AddChild(instance);
-        AddChild(PlayerInstance);
-    }
-
-    private void LoadMainMenu()
-    {
-        this.killAllChildren();
-        this.CurrentScene = "MainMenu";
-        PackedScene MainMenu = GetScene(this.CurrentScene);
-        Node MenuInstance = MainMenu.Instantiate();
-
-        AddChild(MenuInstance);
     }
 
     [Signal]
     public delegate void ChangeSceneEventHandler(String name);
 
-    private void ChangeSceneFunc(String name)
+    private async void ChangeSceneFunc(String name)
     {
+        this.killAllChildren();
+
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+
         this.CurrentScene = name;
         PackedScene MainMenu = GetScene(this.CurrentScene);
         Node MenuInstance = MainMenu.Instantiate();
         AddChild(MenuInstance);
-        if (Playable[name].As<bool>())
+        if (IsScenePlayable(name))
         {
             CharacterBody2D PlayerInstance = (CharacterBody2D)(Player.Instantiate());
             PlayerInstance.Position = new Vector2(400, 300);
             AddChild(PlayerInstance);
-
         }
     }
 
@@ -88,7 +103,8 @@ public partial class SceneManager : Node
 	{
         //Connect(ChangeSceneEventHandler, Callable.From<String>(ChangeSceneFunc));
         ChangeScene += this.ChangeSceneFunc;
-        LoadMainMenu();
+        EmitSignal("ChangeScene", "MainMenu");
+        //LoadMainMenu();
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
