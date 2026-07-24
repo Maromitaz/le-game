@@ -2,14 +2,75 @@
 
 [ext_resource type="PackedScene" uid="uid://nww00bxj8ogg" path="res://Scenes/map_1.tscn" id="1_0e48y"]
 [ext_resource type="PackedScene" uid="uid://dcb2re2w3c3w5" path="res://Scenes/player.tscn" id="2_0e48y"]
+[ext_resource type="PackedScene" uid="uid://xr4kua1wjr4b" path="res://assets/Images/Atlases/building.blend" id="3_hh5uf"]
+[ext_resource type="Script" uid="uid://bl6m1mud81brd" path="res://Scenes/sub_viewport_container.gd" id="3_tx0tn"]
+[ext_resource type="Script" uid="uid://bgle44xwyohsf" path="res://Scenes/camera_3d.gd" id="4_6whob"]
+[ext_resource type="Texture2D" uid="uid://jdj1iqm20xij" path="res://assets/Images/Atlases/building_Sprite-0001.png" id="5_u7krg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu0v6"]
+shading_mode = 0
+albedo_color = Color(0.92156863, 0.92156863, 0.92156863, 0)
+albedo_texture = ExtResource("5_u7krg")
+texture_filter = 0
 
 [node name="main scene" type="Node2D" unique_id=308837894]
 
 [node name="Map1" parent="." unique_id=1650113571 instance=ExtResource("1_0e48y")]
+position = Vector2(-374, 122)
 
-[node name="Node2D" type="Node2D" parent="." unique_id=290077411]
-z_index = 1
-
-[node name="Player" parent="Node2D" unique_id=167226555 instance=ExtResource("2_0e48y")]
-position = Vector2(594, 380)
+[node name="Player" parent="." unique_id=167226555 instance=ExtResource("2_0e48y")]
+position = Vector2(622, 492)
 speed = 500.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player" unique_id=696088650]
+follow_viewport_enabled = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Player/CanvasLayer" unique_id=1176030902]
+propagate_maximum_size = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+offset_top = 166.0
+offset_right = 46.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+localize_numeral_system = false
+script = ExtResource("3_tx0tn")
+
+[node name="SubViewport" type="SubViewport" parent="Player/CanvasLayer/SubViewportContainer" unique_id=1211137668]
+transparent_bg = true
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Player/CanvasLayer/SubViewportContainer/SubViewport" unique_id=497927222]
+transform = Transform3D(0.0008562365, 0.99999934, -0.0007720745, 0, 0.0007720748, 0.9999997, 0.99999964, -0.0008562362, 6.610786e-07, -1.771234, 16.928438, 8.783453)
+script = ExtResource("4_6whob")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1199331457]
+
+[node name="building" parent="." unique_id=2125996108 instance=ExtResource("3_hh5uf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9858212, 2.2896166, -4.6700387)
+
+[node name="Cube" parent="building" index="0" unique_id=1196912128]
+transform = Transform3D(2.9510114, 0, 0, 0, 1.9910486, 0, 0, 0, 1, 0.19633198, -0.16417265, 2.3480005)
+material_override = SubResource("StandardMaterial3D_vu0v6")
+cast_shadow = 0
+lod_bias = 0.001
+gi_lightmap_texel_scale = 0.01
+
+[node name="building" parent="building" unique_id=1442296986 instance=ExtResource("3_hh5uf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3311868, -0.08766317, 18.180485)
+
+[node name="building2" parent="building" unique_id=817755296 instance=ExtResource("3_hh5uf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1751523, -0.32983065, -20.38309)
+
+[node name="building3" parent="building" unique_id=2025947739 instance=ExtResource("3_hh5uf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.856113, -0.30473804, 8.419178)
+
+[editable path="building"]
